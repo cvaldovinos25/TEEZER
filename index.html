@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#b7a2e6">
+<title>Tu pelo, tu cepillo | Salcobrand</title>
+<link rel="icon" href="img/sb-logo.png">
+<link rel="stylesheet" href="css/app.css?v=2">
+</head>
+<body>
+<video id="cam" playsinline muted autoplay></video>
+<div id="veil"></div>
+<canvas id="gl"></canvas>
+
+<header id="top" hidden><b id="topTit"></b><button id="btnLista" class="chip"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>Mi lista <i id="nLista">0</i></button></header>
+
+<main id="app">
+  <!-- Bienvenida -->
+  <section class="screen on" id="sWelcome">
+    <div class="card glass-w">
+      <div class="brand"><img src="img/sb-logo.png" alt="Salcobrand"><i></i><span>Tangle Teezer</span></div>
+      <span class="tag" id="tagPrueba" hidden>Modo de prueba</span>
+      <h1>Tu pelo,<br><em>tu cepillo</em></h1>
+      <p class="lead">Responde 3 preguntas y te mostramos en 3D cuál cepillo <b>Tangle Teezer</b> te conviene, con cómo usarlo.</p>
+      <button class="btn" id="btnStart">Empezar</button>
+      <button class="btn ghost" id="btnScan0">Ya tengo uno en la mano</button>
+      <p class="fine">Usaremos tu cámara como fondo y para leer el código de barras. No se guarda ninguna imagen. Es una guía orientativa, no un consejo profesional.</p>
+    </div>
+  </section>
+
+  <!-- Preguntas -->
+  <section class="screen" id="sTest">
+    <div class="card glass-w">
+      <div class="prog"><i id="tBar"></i></div>
+      <small class="step" id="tStep"></small>
+      <h2 id="tQ"></h2>
+      <div class="opts" id="tOpts"></div>
+      <button class="link" id="tBack">Volver</button>
+    </div>
+  </section>
+
+  <!-- Resultado (AR) -->
+  <section class="screen" id="sResult">
+    <div class="result">
+      <div class="r-head glass-w card">
+        <small id="rWhy"></small>
+        <h2 id="rName"></h2>
+        <p id="rSum"></p>
+        <span class="aff" id="rAff"></span>
+      </div>
+      <div class="cards" id="rCards"></div>
+      <div class="r-acts">
+        <button class="btn" id="btnSave">Guardar en mi lista</button>
+        <div class="two"><button class="btn ghost sm" id="btnScan">Escanear mi envase</button><button class="btn ghost sm" id="btnRedo">Repetir test</button></div>
+        <div class="alts" id="rAlts"></div>
+        <button class="link" id="btnBridge" hidden>Juega "Desenreda el nudo" y gana un cupón</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Escáner -->
+  <section class="screen" id="sScan">
+    <div class="scanbox"><div class="reticle"></div></div>
+    <div class="card glass-w sc-card">
+      <b id="scMsg">Apunta al código de barras del envase</b>
+      <span id="scSub">Mantén el envase firme y con buena luz.</span>
+      <div class="verdict" id="scVerdict" hidden></div>
+      <form id="manual" class="manual"><input id="mCode" inputmode="numeric" placeholder="O escribe el código (13 dígitos)" maxlength="14"><button class="btn sm" type="submit">Buscar</button></form>
+      <div class="two"><button class="btn ghost sm" id="scClose">Cerrar</button><button class="btn ghost sm" id="scAgain" hidden>Escanear otro</button></div>
+    </div>
+  </section>
+</main>
+
+<!-- Hoja de detalle y de lista -->
+<div id="sheetBg" hidden></div>
+<div id="sheet" hidden role="dialog" aria-modal="true"><button class="x" id="sheetX" aria-label="Cerrar">×</button><div id="sheetBody"></div></div>
+<div id="toast" hidden></div>
+
+<script src="lib/three.min.js"></script>
+<script src="lib/zxing.min.js"></script>
+<script src="js/config.js?v=2"></script>
+<script src="js/cam.js?v=2"></script>
+<script src="js/track.js?v=2"></script>
+<script src="js/brush.js?v=2"></script>
+<script src="js/recommend.js?v=2"></script>
+<script src="js/scan.js?v=2"></script>
+<script src="js/app.js?v=2"></script>
+</body>
+</html>
